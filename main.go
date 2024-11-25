@@ -1,19 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"main/data_structures"
 )
 
 func main() {
-	list := data_structures.DoublyLinkedList{}
-	list.InsertAtEnd(20)
-	list.InsertAtEnd(30)
-	list.InsertAtBeginning(10)
+	stack := data_structures.Stack{}
 
-	fmt.Println("Forward:")
-	list.PrintForward()
+	stack.Push(10)
+	stack.Push(20)
 
-	fmt.Println("Backward:")
-	list.PrintBackward()
+	stack.Pop()
+
+	stack.Print()
 }
