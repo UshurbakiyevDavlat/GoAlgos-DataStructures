@@ -5,12 +5,13 @@ import (
 )
 
 func main() {
-	stack := data_structures.Stack{}
+	queue := data_structures.Queue{}
 
-	stack.Push(10)
-	stack.Push(20)
+	queue.Enqueue(1)
+	queue.Enqueue(2)
+	queue.Enqueue(3)
 
-	stack.Pop()
+	queue.Dequeue()
 
-	stack.Print()
+	queue.Print()
 }
