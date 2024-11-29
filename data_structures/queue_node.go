@@ -55,3 +55,37 @@ func (q *Queue) Print() {
 		current = current.next
 	}
 }
+
+func (q *Queue) Reverse() {
+	if q.front == nil {
+		return
+	}
+
+	var prev, current, next *QueueNode
+	current = q.front
+
+	for current != nil {
+		next = current.next
+		current.next = prev
+		prev = current
+		current = next
+	}
+
+	q.rear = q.front
+	q.front = prev
+}
+
+func CompareQueues(q1, q2 *Queue) bool {
+	current1 := q1.front
+	current2 := q2.front
+
+	for current1 != nil && current2 != nil {
+		if current1.data != current2.data {
+			return false
+		}
+		current1 = current1.next
+		current2 = current2.next
+	}
+
+	return current1 == nil && current2 == nil
+}
