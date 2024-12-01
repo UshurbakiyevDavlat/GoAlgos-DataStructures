@@ -8,15 +8,38 @@ import (
 )
 
 func main() {
-	expression := "3 4 + 2 * 7 /" // Ожидаемый результат: ((3 + 4) * 2) / 7 = 2
-	result, err := evaluateRPN(expression)
-	if err != nil {
-		fmt.Println("Ошибка:", err)
-	} else {
-		fmt.Println("Результат:", result)
+	examples := []string{
+		"({[]})", // true
+		"([)]",   // false
+		"(]",     // false
+		"()",     // true
+		"",       // true
+	}
+
+	for _, example := range examples {
+		fmt.Printf("Input: %s, Valid: %v\n", example, isValidParentheses(example))
 	}
 }
 
+func isValidParentheses(s string) bool {
+	stack := data_structures.Stack[rune]{}
+	matchingBrackets := map[rune]rune{
+		')': '(',
+		'}': '{',
+		']': '[',
+	}
+	for _, char := range s {
+		if open, ok := matchingBrackets[char]; ok {
+			top, err := stack.Pop()
+			if err != nil || top != open {
+				return false
+			}
+		} else {
+			stack.Push(char)
+		}
+	}
+	return stack.IsEmpty()
+}
 func evaluateRPN(expression string) (int, error) {
 	stack := data_structures.Stack[int]{}
 	tokens := strings.Split(expression, " ")
