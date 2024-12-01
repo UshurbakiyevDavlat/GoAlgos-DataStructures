@@ -18,7 +18,7 @@ func main() {
 }
 
 func evaluateRPN(expression string) (int, error) {
-	stack := data_structures.Stack{}
+	stack := data_structures.Stack[int]{}
 	tokens := strings.Split(expression, " ")
 
 	for _, token := range tokens {
