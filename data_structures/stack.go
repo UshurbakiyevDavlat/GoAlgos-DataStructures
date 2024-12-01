@@ -2,24 +2,25 @@ package data_structures
 
 import "fmt"
 
-type StackNode struct {
-	data int
-	next *StackNode
+type StackNode[T any] struct {
+	data T
+	next *StackNode[T]
 }
 
-type Stack struct {
-	top *StackNode
+type Stack[T any] struct {
+	top *StackNode[T]
 }
 
-func (s *Stack) Push(value int) {
-	newNode := &StackNode{data: value}
+func (s *Stack[T]) Push(value T) {
+	newNode := &StackNode[T]{data: value}
 	newNode.next = s.top
 	s.top = newNode
 }
 
-func (s *Stack) Pop() (int, error) {
+func (s *Stack[T]) Pop() (T, error) {
 	if s.IsEmpty() {
-		return 0, fmt.Errorf("stack is empty")
+		var zeroValue T
+		return zeroValue, fmt.Errorf("stack is empty")
 	}
 
 	value := s.top.data
@@ -27,22 +28,23 @@ func (s *Stack) Pop() (int, error) {
 	return value, nil
 }
 
-func (s *Stack) Peek() (int, error) {
+func (s *Stack[T]) Peek() (T, error) {
 	if s.IsEmpty() {
-		return 0, fmt.Errorf("stack is empty")
+		var zeroValue T
+		return zeroValue, fmt.Errorf("stack is empty")
 	}
 	return s.top.data, nil
 }
 
-func (s *Stack) IsEmpty() bool {
+func (s *Stack[T]) IsEmpty() bool {
 	return s.top == nil
 }
 
-func (s *Stack) Print() {
+func (s *Stack[T]) Print() {
 	current := s.top
 
 	for current != nil {
-		fmt.Printf("%d ->", current.data)
+		fmt.Printf("%v ->", current.data)
 		current = current.next
 	}
 }
