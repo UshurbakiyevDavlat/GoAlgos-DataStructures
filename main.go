@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+	"main/sorting"
 	"main/tasks"
 )
 
 func main() {
-	// Задача 1: Проверка скобок
+	// Проверка скобок
 	fmt.Println("Valid Parentheses:", tasks.IsValidParentheses("({[]})")) // true
 
-	// Задача 2: Обратная польская запись
+	// Обратная польская запись
 	rpnResult, err := tasks.EvaluateRPN("3 4 + 2 * 7 /")
 	if err != nil {
 		fmt.Println("Error:", err)
@@ -17,7 +18,15 @@ func main() {
 		fmt.Println("RPN Result:", rpnResult) // 2
 	}
 
-	// Задача 3: Прямоугольник в гистограмме
+	// Прямоугольник в гистограмме
 	heights := []int{2, 1, 5, 6, 2, 3}
 	fmt.Println("Largest Rectangle Area:", tasks.LargestRectangleArea(heights)) // 10
+
+	// Сортировка выбором
+	arr := []int{64, 25, 12, 22, 11}
+	fmt.Println("Before sorting:", arr)
+
+	sorting.SelectionSort(arr)
+
+	fmt.Println("After sorting:", arr)
 }
