@@ -23,10 +23,10 @@ func main() {
 	fmt.Println("Largest Rectangle Area:", tasks.LargestRectangleArea(heights)) // 10
 
 	// Сортировка выбором
-	arr := []int{64, 25, 12, 22, 11}
+	arr := []int{3, 8, 2, 1, 7}
 	fmt.Println("Before sorting:", arr)
 
-	sorting.SelectionSort(arr)
+	sorting.InsertionSort(arr)
 
 	fmt.Println("After sorting:", arr)
 }
