@@ -26,7 +26,7 @@ func main() {
 	arr := []int{3, 8, 2, 1, 7}
 	fmt.Println("Before sorting:", arr)
 
-	sorting.InsertionSort(arr)
+	sorting.BubleSort(arr)
 
 	fmt.Println("After sorting:", arr)
 }

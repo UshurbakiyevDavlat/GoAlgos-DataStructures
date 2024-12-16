@@ -1,5 +1,15 @@
 package sorting
 
+func BubleSort(arr []int) {
+	for i := 0; i < len(arr); i++ {
+		for j := 0; j < len(arr); j++ {
+			if arr[i] < arr[j] {
+				arr[i], arr[j] = arr[j], arr[i]
+			}
+		}
+	}
+}
+
 func SelectionSort(arr []int) {
 	n := len(arr)
 
@@ -11,14 +21,16 @@ func SelectionSort(arr []int) {
 				minIndex = j
 			}
 		}
+
 		arr[i], arr[minIndex] = arr[minIndex], arr[i]
 	}
 }
 
 func InsertionSort(arr []int) {
-	for i := 1; i < len(arr); i++ { // 3 8 2 1 7
-		key := arr[i] //arr[2] -> 2
-		j := i - 1    // arr[1] -> 8
+	n := len(arr)
+	for i := 1; i < n; i++ {
+		key := arr[i]
+		j := i - 1
 
 		for j >= 0 && arr[j] > key {
 			arr[j+1] = arr[j]
