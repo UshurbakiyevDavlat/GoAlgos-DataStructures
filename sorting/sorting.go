@@ -72,3 +72,27 @@ func Merge(left, right []int) []int {
 
 	return result
 }
+
+func QuickSort(arr []int) []int { //todo need to implement in-place kind of this sorting
+	if len(arr) <= 1 {
+		return arr
+	}
+
+	pivot := arr[len(arr)/2]
+
+	left := []int{}
+	right := []int{}
+	equal := []int{}
+
+	for _, num := range arr {
+		if num < pivot {
+			left = append(left, num)
+		} else if num > pivot {
+			right = append(right, num)
+		} else {
+			equal = append(equal, num)
+		}
+	}
+
+	return append(append(QuickSort(left), equal...), QuickSort(right)...)
+}
