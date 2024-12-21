@@ -29,4 +29,14 @@ func main() {
 	sortedArr := sorting.QuickSort(arr)
 
 	fmt.Println("After sorting:", sortedArr)
+
+	target := 2
+
+	index := sorting.BinarySearch(sortedArr, target)
+
+	if index != -1 {
+		fmt.Printf("Element %d found at index %d\n", target, index)
+	} else {
+		fmt.Printf("Element %d not found\n", target)
+	}
 }
