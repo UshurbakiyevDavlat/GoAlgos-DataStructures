@@ -9,6 +9,10 @@ import (
 )
 
 func EvaluateRPN(expression string) (int, error) {
+	if expression == "" {
+		return 0, fmt.Errorf("invalid expression: invalid token: ")
+	}
+
 	stack := data_structures.Stack[int]{}
 	tokens := strings.Split(expression, " ")
 
@@ -19,11 +23,11 @@ func EvaluateRPN(expression string) (int, error) {
 			if token == "+" || token == "-" || token == "*" || token == "/" {
 				right, err := stack.Pop()
 				if err != nil {
-					return 0, fmt.Errorf("invalid expression: %s", err)
+					return 0, fmt.Errorf("invalid expression: too many arguments")
 				}
 				left, err := stack.Pop()
 				if err != nil {
-					return 0, fmt.Errorf("invalid expression: %s", err)
+					return 0, fmt.Errorf("invalid expression: too many arguments")
 				}
 
 				var result int
