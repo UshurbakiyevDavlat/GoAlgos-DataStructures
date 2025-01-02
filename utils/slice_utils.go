@@ -30,3 +30,15 @@ func RemoveElement(slice []int, index int) []int {
 	copy(slice[index:], slice[index+1:])
 	return slice[:len(slice)-1]
 }
+
+func slicesEqual(a, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
